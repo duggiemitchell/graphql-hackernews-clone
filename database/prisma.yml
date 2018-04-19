@@ -1,0 +1,10 @@
+# main config file for Prism database
+service: hackernews-node
+
+stage: dev
+
+datamodel: datamodel.graphql
+
+secret: mysecret123
+
+cluster: public-treehawk-486/prisma-us1

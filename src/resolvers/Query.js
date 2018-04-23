@@ -1,13 +1,14 @@
-function feed(root, args, context, info) {
-  return context.db.mutation.createink(
-    {
-      data: {
-        url: args.url,
-        description: args.description
+function feed(parent, args, context, info) {
+  const where = args.filter
+    ? {
+        OR: [
+          { url_contains: args.filter },
+          { description_contains: args.filter }
+        ]
       }
-    },
-    info
-  );
+    : {};
+
+  return context.db.query.links({ where }, info);
 }
 
 module.exports = {
